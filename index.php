@@ -1,52 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-</head>
+<?php 
+include_once "header.php"; 
+
+session_start();
+if(isset($_SESSION["unique_id"]))
+{
+    header("location: users.php");
+}
+?>
+
 <body>
     
     <div class="wrapper">
         <section class="form signup">
             <header>Realtime Chat App</header>
 
-            <form action="#" enctype="multipart/form-data">
+            <form action="#" method="POST" enctype="multipart/form-data">
                 <div class="error-txt">This is A Error Message!</div>
                     <div class="name-details">
                         <div class="field input">
                             <label for="first_name">First Name</label>
-                            <input type="text" id="first_name" placeholder="First Name" required>
+                            <input type="text" id="first_name" placeholder="First Name" required name="first_name">
                         </div>
                         <div class="field input">
                             <label for="last_name">Last Name</label>
-                            <input type="text" id="last_name" placeholder="Last Name" required>
+                            <input type="text" id="last_name" placeholder="Last Name" required name="last_name">
                         </div>
                     </div>
                     <div class="field input">
                         <label for="email">Email Addres</label>
-                        <input type="email" id="email" placeholder="Enter You Email Addres" required>
+                        <input type="email" id="email" placeholder="Enter You Email Addres" required name="email">
                     </div>
                     <div class="field input">
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Enter Your Password Account" required>
+                        <input type="password" id="password" placeholder="Enter Your Password Account" required name="password">
                         <i class="fas fa-eye"></i>
                     </div>
                     <div class="field image">
                         <label for="image">Select Image</label>
-                        <input type="file" id="image" required>
+                        <input type="file" id="image" required name="image">
                     </div>
-                <div class="field">
+                <div class="field button">
                     <input type="submit" value="Continue to Chat">
                 </div>
             </form>
 
-            <div class="link">Already Sign Up? <a href="login.html">Login Now!</a></div>
+            <div class="link">Already Sign Up? <a href="login.php">Login Now!</a></div>
         </section>
     </div>
 
+    <script src="javascript/pass-show-hide.js"></script>
+    <script src="javascript/signup.js"></script>
 </body>
 </html>

@@ -47,6 +47,7 @@ body {
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #f5c6cb;
+    display: none;
 }
 
 .form form .name-details {
@@ -105,6 +106,11 @@ body {
     top: 70%;
     transform: translateY(-50%);
     cursor: pointer;
+}
+
+.form form .field i.active::before {
+    color: #333;
+    content: "\f070";
 }
 
 .form .link {
@@ -183,13 +189,20 @@ body {
 .users .search input {
     position: absolute;
     height: 42px;
-    /*width: calc(100% - 50%);
-    */
+    /* width: calc(100% - 50%); */
     border: 1px solid #ccc;
     padding: 0 13px;
     font-size: 16px;
     border-radius: 5px 0 0 5px;
     outline: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.users .search input.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .users .search button {
@@ -197,16 +210,30 @@ body {
     height: 42px;
     border: none;
     outline: none;
-    color: #fff;
-    background: #333;
+    color: #333;
+    background: #fff;
     cursor: pointer;
     font-size: 17px;
     border-radius: 0 5px 5px 0;
+    transition: all 0.2s ease;
+}
+
+.users .search button.active {
+    color: #fff;
+    background: #333;
+}
+
+.users .search button.active i::before {
+    content: "\f00d";
 }
 
 .users-list {
     max-height: 350px;
     overflow-y: auto;
+}
+
+:is(.users-list, .chat-box)::-webkit-scrollbar {
+    width: 0px;
 }
 
 .users-list a {
@@ -244,4 +271,111 @@ body {
 /* We use this class name in php to show offline status */
 .users-list a .status-dot.offline {
     color: #ccc;
+}
+
+
+/* Chat Area CSS Code */
+.chat-area header {
+    display: flex;
+    align-items: center;
+    padding: 18px 30px;
+}
+
+.chat-area header .back-icon {
+    font-size: 18px;
+    color: #333;
+}
+
+.chat-area header img {
+    height: 45px;
+    width: 45px;
+    margin: 0 15px;
+}
+
+.chat-area header span {
+    font-size: 17px;
+    font-weight: 500; 
+}
+
+.chat-box {
+    height: 500px;
+    overflow-y: auto;
+    background: #f7f7f7;
+    padding: 10px 30px 20px 30px;
+    box-shadow: inset 0 32px 32px -32px rgb(0 0 0 / 5%),
+                inset 0 -32px 32px -32px rgb(0 0 0 / 5%),
+}
+
+.chat-box .chat {
+    margin: 15px 0;
+}
+
+.chat-box .chat p {
+    word-wrap: break-word;
+    padding: 8px 16px; 
+    box-shadow: 0 0 32px rgb(0 0 0 / 8%),
+                0 15 16px rgb(0 0 0 / 10%);
+}
+
+.chat-box .outgoing {
+    display: flex;
+}
+
+.outgoing .details {
+    margin-left: auto;
+    max-width: calc(100% - 130px);
+}
+
+.outgoing .details p {
+    background: #333;
+    color: #fff;
+    border-radius: 18px 18px 0 18px;  
+}
+
+.chat-box .incoming {
+    display: flex;
+    align-items: flex-end;
+}
+
+.chat-box .incoming img {
+    height: 35px;
+    width: 35px;
+}
+
+.incoming .details {
+    margin-left: 10px;
+    margin-right: auto;
+    max-width: calc(100% - 130px);
+}
+
+.incoming .details p {
+    color: #333;
+    background: #fff;
+    border-radius: 18px 18px 18px 0;
+}
+
+.chat-area .typing-area {
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.typing-area input{
+    height: 45px;
+    width: calc(100% - 58px);
+    font-size: 17px;
+    border: 1px solid #ccc;
+    padding: 0 13px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.typing-area button {
+    width: 55px;
+    border: none;
+    outline: none;
+    background: #fff;
+    font-size: 19px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
 }
