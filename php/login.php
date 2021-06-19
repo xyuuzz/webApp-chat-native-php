@@ -12,9 +12,10 @@ if(!empty($email) && !empty($password)) // jika field email & pass terisi ...
         $unique_email = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'"); // get data user
         if(mysqli_num_rows($unique_email)) // if data user is include in database
         {
-            $row = mysqli_fetch_assoc($unique_email);
-            mysqli_query($conn, "UPDATE users SET status = 'Active Now'");
-            $_SESSION["unique_id"] = $row["unique_id"];
+            $row = mysqli_fetch_assoc($unique_email); 
+            // set status user 
+            mysqli_query($conn, "UPDATE users SET status = 'Active Now' WHERE unique_id = {$row['unique_id']}");
+            $_SESSION["unique_id"] = $row["unique_id"]; // add session
             echo "success";
         }
         else

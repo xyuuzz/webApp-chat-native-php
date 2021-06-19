@@ -21,13 +21,13 @@ if(!isset($_SESSION["unique_id"])) // if user not a unique_id on their session, 
                 }
             ?>
                 <div class="content">
-                    <img src="images/<?= $row["image"] ?>" alt="profil">
+                    <img src="images/<?=$row["image"]?>" alt="profil">
                     <div class="details">
                         <span><?= $row["first_name"] . ' ' . $row["last_name"] ?></span>
                         <p><?= $row["status"] ?></p>
                     </div>
                 </div>
-                <a href="login.php" class="logout">Logout</a>
+                <a href="#" class="logout">Logout</a>
             </header>
             <div class="search">
                 <span class="text">Select A User to start chat!</span>
@@ -44,8 +44,7 @@ if(!isset($_SESSION["unique_id"])) // if user not a unique_id on their session, 
                         </div>
                     </div>
                     <div class="status-dot"><i class="fas fa-circle"></i></div>
-                </a>
-                -->
+                </a> -->
             </div>
         </section>
     </div>

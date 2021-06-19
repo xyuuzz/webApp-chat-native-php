@@ -1,6 +1,7 @@
 const searchBar = document.querySelector(".users .search input"),
         searchButton = document.querySelector(".users .search button"),
-        usersList = document.querySelector(".users .users-list");
+        usersList = document.querySelector(".users .users-list"),
+        logoutButton = document.querySelector(".logout");
 
 searchButton.onclick = () => { // when search button clicked, then..
     searchBar.classList.toggle("active");
@@ -52,6 +53,26 @@ setInterval( () => { // setiap 0.5 detik, jalankan function dibawah..
                 }
             }
         }
-    }
+    };
     xhr.send();
 }, 500 );
+
+
+// logout
+logoutButton.onclick = () => {
+    let xhr = new XMLHttpRequest();  // create xhr object
+    xhr.open("GET", "php/logout.php", true); // open xhr file
+    xhr.onload = () =>  // if xhr loading done
+    {
+        if(xhr.readyState === XMLHttpRequest.DONE)  // request done
+        {
+            if(xhr.status === 200)  // status code is 200
+            {
+                let data = xhr.response; // xhr response 
+                location.href = "login.php";
+            }
+        }
+    };
+    xhr.send();
+}
+

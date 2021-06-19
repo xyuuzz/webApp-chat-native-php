@@ -374,8 +374,13 @@ body {
     width: 55px;
     border: none;
     outline: none;
-    background: #fff;
+    background: #333;
     font-size: 19px;
     cursor: pointer;
     border-radius: 0 5px 5px 0;
+}
+
+.typing-area button i {
+    background: #ccc;
+    color: #ccc;
 }
